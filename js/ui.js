@@ -152,7 +152,7 @@ const UI = (() => {
       const tag = tags[o.tag] || "";
       return `
       <div style="margin-bottom:14px">
-        <div class="explain-title">${icones[o.tag] || "●"} ${esc(tag)}: <span style="color:#e9eef7">${esc(o.titulo)}</span></div>
+        <div class="explain-title">${icones[o.tag] || "●"} ${esc(tag)}: <span style="color:#ece6d8">${esc(o.titulo)}</span></div>
         <p>${esc(o.texto)}</p>
       </div>`;
     });

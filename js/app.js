@@ -169,9 +169,9 @@
 
     $("pres-table").innerHTML = UI.cmpTable(pres.itens, t);
 
-    const chartRows = pres.itens.filter((i) => i.atual > 0 || i.pos > 0).map((i) => ({ label: shortKey(i.key), a: i.atual, b: i.pos, colA: "#5c6579", colB: "#2dd4bf" }));
-    chartRows.push({ label: "TOTAL", a: t.atual, b: t.pos, colA: "#5c6579", colB: "#38bdf8" });
-    $("pres-chart").innerHTML = UI.barChart({ rows: chartRows, colA: "#5c6579", colB: "#2dd4bf", labelA: "Regime Atual", labelB: "Pós-Reforma", height: 150 });
+    const chartRows = pres.itens.filter((i) => i.atual > 0 || i.pos > 0).map((i) => ({ label: shortKey(i.key), a: i.atual, b: i.pos, colA: "#5c6473", colB: "#c9a45c" }));
+    chartRows.push({ label: "TOTAL", a: t.atual, b: t.pos, colA: "#5c6473", colB: "#e3c887" });
+    $("pres-chart").innerHTML = UI.barChart({ rows: chartRows, colA: "#5c6473", colB: "#c9a45c", labelA: "Regime Atual", labelB: "Pós-Reforma", height: 150 });
 
     $("pres-explain").innerHTML = UI.explainBlock(Calculator.leituraPresumido(pres));
   }
@@ -188,7 +188,7 @@
     $("hibrido-note").textContent =
       "No Híbrido, IBS e CBS saem do DAS e são apurados pelo regime regular não cumulativo — o CPP permanece no DAS em qualquer cenário. Antes de comparar a migração, confira se a seção “Lucro Presumido” reflete os dados reais do cliente.";
 
-    const colors = ["#fbbf24", "#a78bfa", "#38bdf8"];
+    const colors = ["#9c7b2e", "#c9a45c", "#e3c887"];
     const rows = c.map((x, i) => ({ label: x.nome.split(" ").slice(0, 2).join(" "), v: x.mensal, col: colors[i] }));
     $("simples-chart").innerHTML =
       '<div style="height:14px"></div><div style="font-size:12.5px;color:var(--muted);margin-bottom:4px">Custo mensal (recolhimento em R$)</div>' + UI.barChart3({ rows });
@@ -210,7 +210,7 @@
         </tbody>
       </table>`;
 
-    const colors = ["#fbbf24", "#a78bfa", "#38bdf8"];
+    const colors = ["#9c7b2e", "#c9a45c", "#e3c887"];
     $("resumo-simples").innerHTML = `
       <table class="tbl">
         <thead><tr><th>Cenário</th><th class="num">Total mensal</th><th class="num">Total anual</th><th class="num">Var. vs. DAS</th></tr></thead>

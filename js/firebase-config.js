@@ -41,12 +41,12 @@
 "use strict";
 
 const FIREBASE_CONFIG = {
-  apiKey: "SUA-apiKey",
-  authDomain: "SUA-authDomain",
-  projectId: "SUA-projectId",
-  storageBucket: "SUA-storageBucket",
-  messagingSenderId: "SUA-messagingSenderId",
-  appId: "SUA-appId",
+  apiKey: "AIzaSyAWIda1rcXxXBo3nM5EZgDY8nlZVfLCwNY",
+  authDomain: "calculadora-impacto.firebaseapp.com",
+  projectId: "calculadora-impacto",
+  storageBucket: "calculadora-impacto.firebasestorage.app",
+  messagingSenderId: "1012389071205",
+  appId: "1:1012389071205:web:cbbd8957cd5a667e44f98c",
 };
 
 /* Senha do painel ADMIN — equipe GTCON. Mude antes de publicar. */
