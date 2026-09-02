@@ -123,7 +123,8 @@ input, select, textarea { font-family: var(--font-body); }
 .brand-text small { color: var(--muted); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; }
 .brand-lg .brand-mark { width: 50px; height: 50px; font-size: 26px; }
 .brand-lg .brand-text strong { font-size: 18px; }
-.brand-lg-logo { width: 140px; height: 140px; border-radius: 14px; object-fit: contain; border: none; background: none; }
+img.brand-lg-logo { width: 140px; height: 140px; border-radius: 14px; background: none; }
+.brand-lg .brand-mark.brand-lg-logo { border: none; display: block; }
 .brand-lg .brand-text strong.brand-consultoria { font-size: 13px; letter-spacing: 0.05em; }
 
 .auth-card {
