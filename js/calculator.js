@@ -269,7 +269,7 @@ function clamp(v, min, max) {
 }
 
 function fmtDinheiro(v) {
-  return Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: v % 1 === 0 ? 0 : 2, minimumFractionDigits: v % 1 === 0 ? 0 : 2 });
+  return Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function fmtPct(v, digits = 2) {

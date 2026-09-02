@@ -215,13 +215,13 @@
           <div class="card form-card">
             <div class="card-title"><span class="step-badge">2</span> Lucro Presumido</div>
             <label class="field">
-              <span>Receita bruta mensal (R$)</span>
-              <input type="number" id="in-receita" step="any" min="0" placeholder="0,00" />
+              <span>Receita bruta mensal</span>
+              <div class="input-group"><span class="input-affix">R$</span><input type="number" id="in-receita" step="any" min="0" placeholder="0,00" /></div>
             </label>
             <label class="field">
-              <span>Compras/insumos sobre a receita (%)</span>
+              <span>Compras/insumos sobre a receita</span>
               <span class="input-hint">Base de créditos de CBS/IBS</span>
-              <input type="number" id="in-compras" step="any" min="0" max="100" placeholder="%" />
+              <div class="input-group"><input type="number" id="in-compras" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
             </label>
             <label class="field">
               <span>Atividade (presunção IRPJ/CSLL)</span>
@@ -234,19 +234,19 @@
             </label>
             <div class="grid-2-sm">
               <label class="field">
-                <span>ICMS efetivo (%)</span>
+                <span>ICMS efetivo</span>
                 <span class="input-hint">Líquido de créditos</span>
-                <input type="number" id="in-icms" step="any" min="0" max="100" placeholder="%" />
+                <div class="input-group"><input type="number" id="in-icms" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
               </label>
               <label class="field">
-                <span>ISS (%)</span>
-                <input type="number" id="in-iss" step="any" min="0" max="100" placeholder="%" />
+                <span>ISS</span>
+                <div class="input-group"><input type="number" id="in-iss" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
               </label>
             </div>
             <label class="field">
-              <span>IPI (%)</span>
+              <span>IPI</span>
               <span class="input-hint">Se sujeito</span>
-              <input type="number" id="in-ipi" step="any" min="0" max="100" placeholder="%" />
+              <div class="input-group"><input type="number" id="in-ipi" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
             </label>
           </div>
 
@@ -254,8 +254,8 @@
             <div class="card-title"><span class="step-badge">3</span> Simples Nacional <span class="muted">(extraídos do PGDAS-D)</span></div>
             <div class="grid-3">
               <label class="field">
-                <span>RBT12 (R$)</span>
-                <input type="number" id="in-rbt12" step="any" min="0" placeholder="0,00" />
+                <span>RBT12</span>
+                <div class="input-group"><span class="input-affix">R$</span><input type="number" id="in-rbt12" step="any" min="0" placeholder="0,00" /></div>
               </label>
               <label class="field">
                 <span>Anexo do Simples</span>
@@ -268,34 +268,34 @@
                 </select>
               </label>
               <label class="field">
-                <span>Fator R (Anexo III/V) (%)</span>
-                <input type="number" id="in-fatorr" step="any" min="0" max="100" placeholder="%" />
+                <span>Fator R (Anexo III/V)</span>
+                <div class="input-group"><input type="number" id="in-fatorr" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
               </label>
               <label class="field">
-                <span>Receita bruta do mês (PGDAS-D) (R$)</span>
-                <input type="number" id="in-recpgdas" step="any" min="0" placeholder="0,00" />
+                <span>Receita bruta do mês (PGDAS-D)</span>
+                <div class="input-group"><span class="input-affix">R$</span><input type="number" id="in-recpgdas" step="any" min="0" placeholder="0,00" /></div>
               </label>
               <label class="field">
-                <span>Valor total do DAS no mês (R$)</span>
-                <input type="number" id="in-das" step="any" min="0" placeholder="0,00" />
+                <span>Valor total do DAS no mês</span>
+                <div class="input-group"><span class="input-affix">R$</span><input type="number" id="in-das" step="any" min="0" placeholder="0,00" /></div>
               </label>
               <label class="field">
-                <span>Parcela ICMS/ISS dentro do DAS (R$)</span>
-                <input type="number" id="in-dasicms" step="any" min="0" placeholder="0,00" />
+                <span>Parcela ICMS/ISS dentro do DAS</span>
+                <div class="input-group"><span class="input-affix">R$</span><input type="number" id="in-dasicms" step="any" min="0" placeholder="0,00" /></div>
               </label>
               <label class="field">
-                <span>Parcela PIS/COFINS dentro do DAS (R$)</span>
-                <input type="number" id="in-daspis" step="any" min="0" placeholder="0,00" />
+                <span>Parcela PIS/COFINS dentro do DAS</span>
+                <div class="input-group"><span class="input-affix">R$</span><input type="number" id="in-daspis" step="any" min="0" placeholder="0,00" /></div>
               </label>
               <label class="field">
-                <span>Vendas B2B (%)</span>
+                <span>Vendas B2B</span>
                 <span class="input-hint">Clientes não optantes</span>
-                <input type="number" id="in-b2b" step="any" min="0" max="100" placeholder="%" />
+                <div class="input-group"><input type="number" id="in-b2b" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
               </label>
               <label class="field">
-                <span>Compras/insumos sobre receita (%)</span>
+                <span>Compras/insumos sobre receita</span>
                 <span class="input-hint">Base de créditos</span>
-                <input type="number" id="in-comp2" step="any" min="0" max="100" placeholder="%" />
+                <div class="input-group"><input type="number" id="in-comp2" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
               </label>
             </div>
             <p class="field-note">Importação do PGDAS-D: copie os valores do relatório “Discriminação do Recolhimento”. Fora de escopo deste modelo: ICMS-ST, Imposto Seletivo, incentivos e split payment.</p>
@@ -314,12 +314,12 @@
           <div class="card form-card">
             <div class="card-title">Alíquotas de referência</div>
             <label class="field">
-              <span>CBS — alíquota de referência (%)</span>
-              <input type="number" id="in-cbs" step="any" min="0" max="100" />
+              <span>CBS — alíquota de referência</span>
+              <div class="input-group"><input type="number" id="in-cbs" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
             </label>
             <label class="field">
-              <span>IBS — alíquota de referência plena (%)</span>
-              <input type="number" id="in-ibs" step="any" min="0" max="100" />
+              <span>IBS — alíquota de referência plena</span>
+              <div class="input-group"><input type="number" id="in-ibs" step="any" min="0" max="100" placeholder="0" /><span class="input-affix">%</span></div>
             </label>
             <p class="field-note">Padrão: CBS 8,8% e IBS 17,7% (soma ~26,5% — teto legal da LC 214/2025). Resolução CGIBS nº 14/2026 projetou 27,91% para fins orçamentários — não é a definitiva. Reavalie a cada exercício.</p>
           </div>
