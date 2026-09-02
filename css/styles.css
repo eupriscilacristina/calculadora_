@@ -164,6 +164,8 @@ input::placeholder { color: var(--muted-2); }
 .input-group .input-affix { position: absolute; color: var(--muted-2); font-size: 13px; pointer-events: none; }
 .input-group .input-affix:first-child { left: 12px; }
 .input-group .input-affix:first-child + input { padding-left: 34px; }
+.input-group .input-affix-suffix { left: auto; right: 12px; }
+.input-group input:has(+ .input-affix-suffix) { padding-right: 26px; }
 select { appearance: none; cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2398a0b0' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 13px center; padding-right: 34px;
