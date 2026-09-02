@@ -10,6 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/theme-light.css" />
+  <script>
+    try {
+      if (localStorage.getItem("gtcon_theme") === "light") {
+        document.documentElement.dataset.theme = "light";
+      }
+    } catch (e) {}
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e17'/%3E%3Crect x='2.5' y='2.5' width='59' height='59' rx='10' fill='none' stroke='%23c9a45c' stroke-width='2.5'/%3E%3Ctext x='32' y='43' font-family='Georgia, serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23c9a45c'%3EG%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
@@ -141,6 +149,9 @@
         </div>
 
         <p class="auth-footer">Uso interno GTCON Brasil Contabilidade · não distribuir sem revisão técnica</p>
+        <p class="auth-footer" style="margin-top:6px">
+          <button type="button" class="link-like" data-theme-toggle>Tema claro</button>
+        </p>
       </main>
     </div>
   </div>
@@ -170,6 +181,7 @@
           <strong id="user-name">—</strong>
           <small id="user-role">Conta</small>
         </div>
+        <button class="btn btn-ghost" id="theme-toggle" data-theme-toggle type="button">Tema claro</button>
         <button class="btn btn-ghost" id="btn-logout" title="Sair">Sair</button>
       </div>
     </header>

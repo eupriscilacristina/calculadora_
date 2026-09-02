@@ -497,6 +497,31 @@
     setMsg("login-msg", FIREBASE_ENABLED ? "" : "Modo demo: Firebase ainda não vinculado. Crie uma conta para testar.", true);
   }
 
+  /* ---------------- tema claro / escuro ---------------- */
+  function currentTheme() {
+    return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+  }
+
+  function setTheme(t) {
+    if (t === "light") document.documentElement.dataset.theme = "light";
+    else delete document.documentElement.dataset.theme;
+    try {
+      localStorage.setItem("gtcon_theme", t);
+    } catch (e) {
+      /* ignora */
+    }
+    document.querySelectorAll("[data-theme-toggle]").forEach((b) => {
+      b.textContent = t === "light" ? "Tema escuro" : "Tema claro";
+    });
+  }
+
+  function bindTheme() {
+    setTheme(currentTheme());
+    document.querySelectorAll("[data-theme-toggle]").forEach((b) =>
+      b.addEventListener("click", () => setTheme(currentTheme() === "light" ? "dark" : "light"))
+    );
+  }
+
   function start() {
     loadState();
     fillForm();
@@ -504,6 +529,7 @@
     bindInputs();
     bindNav();
     bindLoginToasts();
+    bindTheme();
     activateTab("dados");
     if (Auth.current()) {
       enterMain();
