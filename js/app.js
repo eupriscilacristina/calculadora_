@@ -33,8 +33,14 @@
   };
 
   let state = {};
+  const K_STATE_FB = "gtcon_state_fb";
 
   /* ---------------- estado ---------------- */
+  function sessionKey() {
+    const s = Auth.current();
+    return (s && (s.id || s.email)) || "anon";
+  }
+
   function loadState() {
     const saved = JSON.parse(localStorage.getItem(K_STATE) || "null") || {};
     state = {};
@@ -43,11 +49,60 @@
     });
   }
 
-  function saveState() {
+  function saveLocal() {
     try {
       localStorage.setItem(K_STATE, JSON.stringify(state));
     } catch (e) {
       /* ignore */
+    }
+  }
+
+  function saveState() {
+    saveLocal();
+    scheduleFirebaseSave();
+  }
+
+  /* Salva o estado no Firestore (por usuário). */
+  let fbTimer = null;
+  function scheduleFirebaseSave() {
+    if (!Auth.enabled() || !firebaseApp || !firebaseApp.db) return;
+    clearTimeout(fbTimer);
+    fbTimer = setTimeout(saveToFirebase, 800);
+  }
+
+  async function saveToFirebase() {
+    try {
+      const key = sessionKey();
+      await firebaseApp.db.collection("analises").doc(key).set({
+        state: state,
+        cliente: state.cliente || "",
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+    } catch (e) {
+      console.error("[GTCON] Falha ao salvar no Firebase:", e);
+    }
+  }
+
+  async function loadFromFirebase(force) {
+    if (!Auth.enabled() || !firebaseApp || !firebaseApp.db) return;
+    try {
+      const key = sessionKey();
+      const doc = await firebaseApp.db.collection("analises").doc(key).get();
+      if (doc.exists && doc.data() && doc.data().state) {
+        const saved = doc.data().state;
+        const merged = {};
+        Object.entries(FIELDS).forEach(([k, f]) => {
+          merged[k] = saved[k] !== undefined && saved[k] !== null && saved[k] !== "" ? saved[k] : state[k];
+        });
+        state = merged;
+        saveLocal();
+        if (force) {
+          fillForm();
+          renderCurrent();
+        }
+      }
+    } catch (e) {
+      console.error("[GTCON] Falha ao ler do Firebase:", e);
     }
   }
 
@@ -468,9 +523,15 @@
       });
     });
 
-    $("btn-save-dados").addEventListener("click", () => {
+    $("btn-save-dados").addEventListener("click", async () => {
       readForm();
-      toast("Dados salvos no dispositivo.");
+      saveLocal();
+      if (Auth.enabled() && firebaseApp && firebaseApp.db) {
+        await saveToFirebase();
+        toast("Dados salvos no Firebase.");
+      } else {
+        toast("Dados salvos no dispositivo.");
+      }
     });
   }
 
@@ -543,6 +604,7 @@
     activateTab("dados");
     if (Auth.current()) {
       enterMain();
+      loadFromFirebase(true);
     } else {
       showAuth();
     }

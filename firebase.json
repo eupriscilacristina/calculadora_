@@ -3,8 +3,13 @@
     "public": ".",
     "ignore": [
       "firebase.json",
+      "firebase.*.json",
+      "firestore.rules",
       "**/.*"
     ],
     "cleanUrls": true
+  },
+  "firestore": {
+    "rules": "firestore.rules"
   }
 }
