@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>Impacto da Reforma Tributária · GTCON Brasil Contabilidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8A%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- ============ AUTH VIEWS ============ -->
+  <div id="view-auth" class="view auth-view">
+    <div class="auth-bg" aria-hidden="true">
+      <div class="auth-grid"></div>
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+      <div class="glow glow-c"></div>
+    </div>
+
+    <div class="auth-shell">
+      <aside class="auth-side">
+        <div class="brand brand-lg">
+          <span class="brand-mark">G</span>
+          <span class="brand-text">
+            <strong>GTCON</strong>
+            <small>Brasil Contabilidade</small>
+          </span>
+        </div>
+        <h1>Calculadora de Impacto da<br /><span class="accent">Reforma Tributária</span></h1>
+        <p class="tagline">Lucro Presumido e Simples Nacional — compare a carga atual com o cenário pós-reforma (EC 132/2023 · LC 214/2025) e simule créditos de CBS/IBS, Regime Híbrido e migração.</p>
+        <ul class="feat-list">
+          <li><span class="feat-icon">◈</span> Análise ano a ano 2026 → 2033</li>
+          <li><span class="feat-icon">◈</span> CBS & IBS com créditos de insumos</li>
+          <li><span class="feat-icon">◈</span> Lucro Presumido × ICM/ISS residual</li>
+          <li><span class="feat-icon">◈</span> Simples: DAS × Híbrido × Migração</li>
+          <li><span class="feat-icon">◈</span> Recomendações automáticas por cenário</li>
+        </ul>
+      </aside>
+
+      <main class="auth-main">
+        <div class="auth-card" id="login-card">
+          <div class="card-glow"></div>
+          <div class="auth-head">
+            <span class="chip chip-ok">Acesso restrito à equipe autorizada</span>
+            <h2>Acessar minha conta</h2>
+            <p>Entre com o e-mail e a senha fornecidos pela GTCON.</p>
+          </div>
+
+          <form id="login-form" autocomplete="on">
+            <label class="field">
+              <span>E-mail</span>
+              <input type="email" id="login-email" placeholder="voce@empresa.com.br" required />
+            </label>
+            <label class="field">
+              <span>Senha</span>
+              <input type="password" id="login-password" placeholder="••••••••" required />
+            </label>
+            <button type="submit" class="btn btn-primary btn-block" id="login-submit">
+              <span>Entrar na calculadora</span>
+            </button>
+            <p class="form-msg" id="login-msg" role="status"></p>
+          </form>
+
+          <div class="auth-switch">
+            Ainda não tem acesso?
+            <button type="button" class="link-like" id="go-register">Criar conta</button>
+          </div>
+          <div class="auth-admin-row">
+            <span>É da equipe GTCON?</span>
+            <button type="button" class="link-like" id="go-admin-login">Acesso ADMIN</button>
+          </div>
+        </div>
+
+        <div class="auth-card hidden" id="register-card">
+          <div class="card-glow"></div>
+          <div class="auth-head">
+            <span class="chip chip-warn">Convite da GTCON</span>
+            <h2>Criar minha conta</h2>
+            <p>Seu acesso será registrado para controle interno da equipe.</p>
+          </div>
+
+          <form id="register-form" autocomplete="on">
+            <label class="field">
+              <span>Nome / Empresa</span>
+              <input type="text" id="reg-name" placeholder="Seu nome ou empresa" required />
+            </label>
+            <label class="field">
+              <span>E-mail</span>
+              <input type="email" id="reg-email" placeholder="voce@empresa.com.br" required />
+            </label>
+            <label class="field">
+              <span>Senha</span>
+              <span class="input-hint">Mínimo de 6 caracteres</span>
+              <input type="password" id="reg-password" placeholder="••••••••" minlength="6" required />
+            </label>
+            <button type="submit" class="btn btn-primary btn-block" id="register-submit">
+              <span>Criar conta e acessar</span>
+            </button>
+            <p class="form-msg" id="register-msg" role="status"></p>
+          </form>
+
+          <div class="auth-switch">
+            Já possui conta?
+            <button type="button" class="link-like" id="back-login">Voltar ao login</button>
+          </div>
+        </div>
+
+        <div class="auth-card hidden" id="admin-card">
+          <div class="card-glow"></div>
+          <div class="auth-head">
+            <span class="chip chip-admin">Somente equipe GTCON</span>
+            <h2>Painel ADMIN · Controle de acessos</h2>
+            <p>Senha interna para visualizar quem acessou a calculadora.</p>
+          </div>
+
+          <form id="admin-form" autocomplete="off">
+            <label class="field">
+              <span>Usuário</span>
+              <input type="text" id="admin-user" value="admin" class="mono" />
+            </label>
+            <label class="field">
+              <span>Senha de administrador</span>
+              <input type="password" id="admin-password" placeholder="Senha interna" required />
+            </label>
+            <button type="submit" class="btn btn-admin btn-block" id="admin-submit">
+              <span>Acessar painel de controle</span>
+            </button>
+            <p class="form-msg" id="admin-msg" role="status"></p>
+          </form>
+
+          <div class="auth-switch">
+            Voltar ao login
+            <button type="button" class="link-like" id="back-login-admin">Entrar com conta</button>
+          </div>
+        </div>
+
+        <p class="auth-footer">Uso interno GTCON Brasil Contabilidade · não distribuir sem revisão técnica</p>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ MAIN APP ============ -->
+  <div id="view-app" class="view app-view hidden">
+    <div class="app-bg" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">G</span>
+        <span class="brand-text">
+          <strong>GTCON</strong>
+          <small>Calculadora de Impacto da Reforma</small>
+        </span>
+      </div>
+      <nav class="tabs" id="app-tabs">
+        <button class="tab" data-tab="dados"><span>Dados de Entrada</span></button>
+        <button class="tab" data-tab="presumido"><span>Lucro Presumido</span></button>
+        <button class="tab" data-tab="simples"><span>Simples Nacional</span></button>
+        <button class="tab" data-tab="resumo"><span>Resumo</span></button>
+        <button class="tab" data-tab="parametros"><span>Parâmetros</span></button>
+      </nav>
+      <div class="userbox">
+        <div class="user-avatar" id="user-avatar">?</div>
+        <div class="user-info">
+          <strong id="user-name">—</strong>
+          <small id="user-role">Conta</small>
+        </div>
+        <button class="btn btn-ghost" id="btn-logout" title="Sair">Sair</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="tab-panel hidden" data-panel="dados">
+        <div class="panel-head">
+          <div>
+            <h2>Dados de Entrada</h2>
+            <p>Identificação e premissas do cliente. Os campos seguem a nomenclatura do PGDAS-D / Discriminação do Recolhimento.</p>
+          </div>
+          <button class="btn btn-secondary" id="btn-save-dados">Salvar localmente</button>
+        </div>
+
+        <div class="grid-2">
+          <div class="card form-card" id="ident-card">
+            <div class="card-title"><span class="step-badge">1</span> Identificação e regime</div>
+            <label class="field">
+              <span>Cliente</span>
+              <input type="text" id="in-cliente" placeholder="Nome do cliente" />
+            </label>
+            <label class="field">
+              <span>Setor de atuação</span>
+              <select id="in-setor">
+                <option value="Comércio/Indústria">Comércio/Indústria</option>
+                <option value="Serviços">Serviços</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Regime atual do cliente</span>
+              <select id="in-regime">
+                <option value="Lucro Presumido">Lucro Presumido</option>
+                <option value="Simples Nacional">Simples Nacional</option>
+              </select>
+            </label>
+            <p class="field-note">Aba “Presumido” deve estar preenchida sempre — inclusive para clientes do Simples, pois alimenta o cenário “Migração” na aba Simples.</p>
+          </div>
+
+          <div class="card form-card">
+            <div class="card-title"><span class="step-badge">2</span> Lucro Presumido</div>
+            <label class="field">
+              <span>Receita bruta mensal (R$)</span>
+              <input type="number" id="in-receita" step="any" min="0" placeholder="0,00" />
+            </label>
+            <label class="field">
+              <span>Compras/insumos sobre a receita (%)</span>
+              <span class="input-hint">Base de créditos de CBS/IBS</span>
+              <input type="number" id="in-compras" step="any" min="0" max="100" placeholder="%" />
+            </label>
+            <label class="field">
+              <span>Atividade (presunção IRPJ/CSLL)</span>
+              <select id="in-atividade">
+                <option value="Comércio/Indústria (8%/12%)">Comércio/Indústria (8%/12%)</option>
+                <option value="Serviços Gerais (32%/32%)">Serviços Gerais (32%/32%)</option>
+                <option value="Serviços — Transporte de carga (8%/12%)">Serviços — Transporte de carga (8%/12%)</option>
+                <option value="Serviços — Transporte demais (16%/12%)">Serviços — Transporte demais (16%/12%)</option>
+              </select>
+            </label>
+            <div class="grid-2-sm">
+              <label class="field">
+                <span>ICMS efetivo (%)</span>
+                <span class="input-hint">Líquido de créditos</span>
+                <input type="number" id="in-icms" step="any" min="0" max="100" placeholder="%" />
+              </label>
+              <label class="field">
+                <span>ISS (%)</span>
+                <input type="number" id="in-iss" step="any" min="0" max="100" placeholder="%" />
+              </label>
+            </div>
+            <label class="field">
+              <span>IPI (%)</span>
+              <span class="input-hint">Se sujeito</span>
+              <input type="number" id="in-ipi" step="any" min="0" max="100" placeholder="%" />
+            </label>
+          </div>
+
+          <div class="card form-card span-2">
+            <div class="card-title"><span class="step-badge">3</span> Simples Nacional <span class="muted">(extraídos do PGDAS-D)</span></div>
+            <div class="grid-3">
+              <label class="field">
+                <span>RBT12 (R$)</span>
+                <input type="number" id="in-rbt12" step="any" min="0" placeholder="0,00" />
+              </label>
+              <label class="field">
+                <span>Anexo do Simples</span>
+                <select id="in-anexo">
+                  <option>Anexo I</option>
+                  <option>Anexo II</option>
+                  <option>Anexo III</option>
+                  <option>Anexo IV</option>
+                  <option>Anexo V</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Fator R (Anexo III/V) (%)</span>
+                <input type="number" id="in-fatorr" step="any" min="0" max="100" placeholder="%" />
+              </label>
+              <label class="field">
+                <span>Receita bruta do mês (PGDAS-D) (R$)</span>
+                <input type="number" id="in-recpgdas" step="any" min="0" placeholder="0,00" />
+              </label>
+              <label class="field">
+                <span>Valor total do DAS no mês (R$)</span>
+                <input type="number" id="in-das" step="any" min="0" placeholder="0,00" />
+              </label>
+              <label class="field">
+                <span>Parcela ICMS/ISS dentro do DAS (R$)</span>
+                <input type="number" id="in-dasicms" step="any" min="0" placeholder="0,00" />
+              </label>
+              <label class="field">
+                <span>Parcela PIS/COFINS dentro do DAS (R$)</span>
+                <input type="number" id="in-daspis" step="any" min="0" placeholder="0,00" />
+              </label>
+              <label class="field">
+                <span>Vendas B2B (%)</span>
+                <span class="input-hint">Clientes não optantes</span>
+                <input type="number" id="in-b2b" step="any" min="0" max="100" placeholder="%" />
+              </label>
+              <label class="field">
+                <span>Compras/insumos sobre receita (%)</span>
+                <span class="input-hint">Base de créditos</span>
+                <input type="number" id="in-comp2" step="any" min="0" max="100" placeholder="%" />
+              </label>
+            </div>
+            <p class="field-note">Importação do PGDAS-D: copie os valores do relatório “Discriminação do Recolhimento”. Fora de escopo deste modelo: ICMS-ST, Imposto Seletivo, incentivos e split payment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel hidden" data-panel="parametros">
+        <div class="panel-head">
+          <div>
+            <h2>Parâmetros da Reforma</h2>
+            <p>Alíquotas de referência e cronograma de transição (LC 214/2025). Ajuste os campos conforme novas resoluções.</p>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="card form-card">
+            <div class="card-title">Alíquotas de referência</div>
+            <label class="field">
+              <span>CBS — alíquota de referência (%)</span>
+              <input type="number" id="in-cbs" step="any" min="0" max="100" />
+            </label>
+            <label class="field">
+              <span>IBS — alíquota de referência plena (%)</span>
+              <input type="number" id="in-ibs" step="any" min="0" max="100" />
+            </label>
+            <p class="field-note">Padrão: CBS 8,8% e IBS 17,7% (soma ~26,5% — teto legal da LC 214/2025). Resolução CGIBS nº 14/2026 projetou 27,91% para fins orçamentários — não é a definitiva. Reavalie a cada exercício.</p>
+          </div>
+          <div class="card form-card">
+            <div class="card-title">Ano de análise</div>
+            <label class="field">
+              <span>Ano selecionado</span>
+              <select id="in-ano"></select>
+            </label>
+            <div id="ano-stats" class="ano-stats"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Cronograma de transição</div>
+            <table class="mini-table">
+              <thead>
+                <tr><th>Ano</th><th>CBS</th><th>IBS efetivo</th><th>ICMS/ISS</th></tr>
+              </thead>
+              <tbody id="schedule-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel hidden" data-panel="presumido">
+        <div class="panel-head">
+          <div>
+            <h2>Lucro Presumido</h2>
+            <p id="pres-header" class="panel-sub"></p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Comparativo mensal — Atual × Pós-Reforma</div>
+            <div id="pres-table"></div>
+          </div>
+          <div class="stack-col">
+            <div class="card">
+              <div class="card-title">Impacto anual</div>
+              <div id="pres-chart"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card explain-card" id="pres-explain"></div>
+      </section>
+
+      <section class="tab-panel hidden" data-panel="simples">
+        <div class="panel-head">
+          <div>
+            <h2>Simples Nacional</h2>
+            <p id="simples-header" class="panel-sub"></p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Comparativo final — DAS × Híbrido × Migração</div>
+            <div id="simples-table"></div>
+            <div id="simples-chart"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Memória de cálculo do Híbrido</div>
+            <div id="hibrido-table"></div>
+            <p class="field-note" id="hibrido-note"></p>
+          </div>
+        </div>
+        <div class="card explain-card" id="simples-explain"></div>
+      </section>
+
+      <section class="tab-panel hidden" data-panel="resumo">
+        <div class="panel-head">
+          <div>
+            <h2>Resumo comparativo</h2>
+            <p id="resumo-header" class="panel-sub"></p>
+          </div>
+        </div>
+        <div class="stack-col">
+          <div class="card">
+            <div class="card-title">Lucro Presumido — carga tributária mensal</div>
+            <div id="resumo-pres"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Simples Nacional — custo mensal por cenário</div>
+            <div id="resumo-simples"></div>
+          </div>
+          <div class="card highlight-card" id="recomend-card">
+            <div class="card-title">Recomendação inteligente</div>
+            <div id="recomend"></div>
+          </div>
+        </div>
+        <div class="card explain-card" id="resumo-explain"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============ ADMIN DASHBOARD ============ -->
+  <div id="view-admin" class="view app-view hidden">
+    <div class="app-bg" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark admin">A</span>
+        <span class="brand-text">
+          <strong>Painel ADMIN</strong>
+          <small>Controle de acessos · GTCON</small>
+        </span>
+      </div>
+      <div class="userbox">
+        <div class="user-info">
+          <strong>Administrador</strong>
+          <small id="admin-role-line">Equipe GTCON</small>
+        </div>
+        <button class="btn btn-ghost" id="admin-back">Calculadora</button>
+        <button class="btn btn-ghost" id="admin-logout">Sair</button>
+      </div>
+    </header>
+    <main class="app-main">
+      <div class="panel-head">
+        <div>
+          <h2>Quem acessou a calculadora</h2>
+          <p>Registros de contas criadas e acessos realizados. Controle interno da GTCON.</p>
+        </div>
+        <button class="btn btn-secondary" id="admin-refresh">Atualizar dados</button>
+      </div>
+
+<div class="kpi-row" id="admin-kpis"></div>
+
+        <div class="card">
+          <div class="card-title">Usuários e acessos
+            <button class="btn btn-ghost" id="admin-copy" style="margin-left:auto">Copiar relatório</button>
+          </div>
+          <div id="admin-table"></div>
+        <p class="field-note" id="admin-note"></p>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <!-- Firebase SDK (CDN, compat build) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+
+  <script src="js/calculator.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
