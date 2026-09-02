@@ -423,15 +423,18 @@
     const s = Auth.current();
     if (!s) return showAuth();
     if (Auth.isAdmin() || forceAdmin) {
-      showAdmin();
-      renderAdmin();
-      $("admin-role-line").textContent = Auth.enabled() ? "Equipe GTCON · Firebase vinculado" : "Equipe GTCON · modo demo";
+      showApp();
+      $("user-name").textContent = "Administrador";
+      $("user-role").textContent = "Equipe GTCON · " + (Auth.enabled() ? "Firebase" : "demo");
+      $("user-avatar").textContent = "A";
+      $("admin-access-btn").classList.remove("hidden");
       return;
     }
     showApp();
     $("user-name").textContent = s.name || s.email || "Usuário";
     $("user-role").textContent = "Conta · " + (Auth.enabled() ? "Firebase" : "demo");
     $("user-avatar").textContent = ((s.name || s.email || "?")[0] || "?").toUpperCase();
+    $("admin-access-btn").classList.add("hidden");
   }
 
   async function onLogout() {
@@ -475,10 +478,12 @@
     document.querySelectorAll("#app-tabs .tab").forEach((b) => b.addEventListener("click", () => activateTab(b.dataset.tab)));
 
     $("btn-logout").addEventListener("click", onLogout);
-    $("admin-back").addEventListener("click", () => {
-      if (Auth.isAdmin()) enterMain(true);
-      else enterMain();
+    $("admin-access-btn").addEventListener("click", () => {
+      showAdmin();
+      renderAdmin();
+      $("admin-role-line").textContent = Auth.enabled() ? "Equipe GTCON · Firebase vinculado" : "Equipe GTCON · modo demo";
     });
+    $("admin-back").addEventListener("click", () => enterMain(true));
     $("admin-logout").addEventListener("click", onLogout);
     $("admin-refresh").addEventListener("click", renderAdmin);
     $("admin-copy")?.addEventListener("click", copyAdmin);
