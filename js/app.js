@@ -516,7 +516,12 @@
       /* ignora */
     }
     document.querySelectorAll("[data-theme-toggle]").forEach((b) => {
-      b.textContent = t === "light" ? "Tema escuro" : "Tema claro";
+      b.classList.toggle("active", false);
+      if (t === "light") {
+        if (b.id === "theme-sun") b.classList.add("active");
+      } else {
+        if (b.id === "theme-moon") b.classList.add("active");
+      }
     });
   }
 

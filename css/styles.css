@@ -186,8 +186,9 @@ select option { background: #0d1320; }
 
 .link-like { background: none; border: none; color: var(--accent); cursor: pointer; font-weight: 600; font-size: 14px; padding: 0; font-family: var(--font-body); }
 .link-like:hover { text-decoration: underline; }
-.auth-theme-toggle { text-align: center; margin-top: 10px; }
-.auth-theme-toggle .link-like { font-size: 20px; color: var(--muted); }
+.auth-theme-toggle { display: flex; justify-content: center; gap: 16px; margin-top: 14px; }
+.theme-icon { background: none; border: none; font-size: 18px; color: var(--muted); cursor: pointer; padding: 2px 6px; opacity: 0.4; transition: opacity 0.2s; }
+.theme-icon.active { opacity: 1; }
 
 .auth-switch { text-align: center; color: var(--muted); font-size: 13.5px; margin-top: 16px; }
 .auth-admin-row { text-align: center; margin-top: 12px; padding-top: 14px; border-top: 1px dashed var(--stroke); color: var(--muted-2); font-size: 12.5px; display: flex; justify-content: center; gap: 8px; align-items: center; }
