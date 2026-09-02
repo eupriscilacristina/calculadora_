@@ -117,10 +117,7 @@ input, select, textarea { font-family: var(--font-body); }
   background: var(--bg-2); border: 1.5px solid rgba(201, 164, 92, 0.55);
   color: var(--accent); font-family: var(--font-head); font-weight: 700; font-size: 22px;
 }
-img.brand-mark { object-fit: contain; background: none; border: none; padding: 0; box-shadow: none; }
-.brand-mark-rect { width: 160px; height: 50px; border-radius: 8px; }
-.brand-lg .brand-mark-rect { width: 200px; height: 60px; border-radius: 10px; }
-.brand-mark-admin { border-color: rgba(142, 159, 224, 0.55); }
+.brand-mark.admin { border-color: rgba(142, 159, 224, 0.55); color: var(--violet); background: var(--bg-2); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-text strong { font-family: var(--font-head); font-size: 16.5px; font-weight: 600; letter-spacing: 0.03em; }
 .brand-text small { color: var(--muted); font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; }
